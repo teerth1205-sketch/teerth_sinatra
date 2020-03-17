@@ -1,0 +1,42 @@
+<%=@errors%>
+would you like to add a new run to your runs list ?
+
+<form method="POST" action="/run/add">
+  New Run 
+  <input type="text" name="time" placeholder="time:">
+  <input type="text" name="location" placeholder="location:">
+  <input type="text" name="miles" placeholder="miles">
+  <input type="date" id="start" name="run_date"
+       placeholder="2018-07-22"
+       min="2018-01-01" max="2018-12-31">
+       <input type="submit" value="Submit">
+</form>
+
+<h1>All Runs that have been logged</h1>
+<%total = 0%>
+
+Total Miles Run:  <%@runs.each do |t| %>
+                  <% total += t.miles%>
+                  <%end%>
+                  <%=total%>
+
+ <%def ms%>
+  <%"%02d:%02d" % [pace.floor, (pace % 1 * 60).floor]%>
+  <%end%>
+<%x=1%>
+<%@runs.each do |t| %>
+<h2><%=x%></h2><br>
+<%x+=1%>
+Time: <%=t.time%><br>
+Miles: <%=t.miles%><br>
+Loaction: <%=t.location%><br>
+Date: <%=t.date%><br>
+Mile Pace: <%pace = (t.time/t.miles.to_f)%><br>
+           <%=pace%><br>
+<a href="/runs/<%=t.id%>/edit"><button>Update</button></a>
+<form method="post" action="/runs/<%= t.id %>">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="delete">
+</form>
+================
+<% end %>
