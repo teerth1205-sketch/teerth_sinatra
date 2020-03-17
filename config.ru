@@ -11,5 +11,5 @@ use Rack::MethodOverride
 
 use EventController
 use UserController
-use LandmarksController
+#use RunController
 run ApplicationController
