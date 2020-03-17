@@ -64,8 +64,4 @@ class UserController < ApplicationController
    redirect '/show/runs'
  end 
  
- def ms
-  "%02d:%02d" % [pace.floor, (pace % 1 * 60).floor]
-  end
- 
 end

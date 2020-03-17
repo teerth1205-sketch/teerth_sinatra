@@ -7,7 +7,8 @@ class Run < ActiveRecord::Base
   def pace
     @pace ||= time/miles.to_f
   end
-  def ms
+  def ms(pace)
   "%02d:%02d" % [pace.floor, (pace % 1 * 60).floor]
   end
+  
 end
