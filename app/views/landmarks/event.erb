@@ -1,0 +1,23 @@
+<h1>Welcome to the events the events you can join!! </h1>
+<%x=1%>
+<%= @error %>
+<%@event.each do |t|%>
+<h2><%=x%></h2>
+<%x+=1%>
+Date: <%=t.date%><br>
+Time: <%=t.time%><br>
+Location: <%=t.location%><br>
+Description: <%=t.description%><br>
+People Attending: <%hello = Rsvp.where(:event_id => t.id)%>
+                  <%= hello.count%>
+<%if session[:user_id] != Rsvp.find_by(:event_id => t.id).user_id%> 
+<form method="POST" action="/events/events/<%=t.id%>/join">
+  <input type="submit" value="Join">
+</form>
+<%else%>
+You created this Event<br>
+<%end%>
+====================
+<%end%>
+
+
