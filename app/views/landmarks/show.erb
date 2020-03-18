@@ -37,8 +37,9 @@
 </form>
 <br>
 <%x=1%>
-<center><%@events.each do |t|%>
-<h2><%=x%></h2>
+<center> <h2>Events List</h2><br>
+<%@events.each do |t|%>
+<h4><%=x%></h4>
 <%x+=1%>
 Time: <%=t.time%><br>
 Location: <%=t.location%><br>
@@ -49,13 +50,14 @@ People Attending: <%hello = Rsvp.where(:event_id => t.id)%>
 <%=@error%>
 <%if session[:user_id] == Rsvp.find_by(:event_id => t.id).user_id%>
 <a href = '/events/<%=t.id%>/update'><button>Update</button></a></a>
-<%end%>
+
 <%=@error1%>
-<%if session[:user_id] == Rsvp.find_by(:event_id => t.id).user_id%>
+
 <form method="post" action="/events/<%= t.id %>/delete">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
   <input type="submit" value="delete">
 </form>
+You created this event! Better Show Up<br>
 <%end%>
 <%if session[:user_id] != Rsvp.find_by(:event_id => t.id).user_id%>
 <form method="post" action="/events/<%= t.id %>/remove">
@@ -63,6 +65,6 @@ People Attending: <%hello = Rsvp.where(:event_id => t.id)%>
   <input type="submit" value="remove">
 </form>
 <%end%>
-
+==================================
 <%end%>
 </center>
