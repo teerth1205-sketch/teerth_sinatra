@@ -1,45 +1,49 @@
 <%#binding.pry%>
-<a href='/show/edit'><button>Update Username and Password</button></a>
+<a href='/show/edit'><button>Update Username and Password</button></a><br>
+<br>
 
 
-Hi <%= @user.name %> 
+<h1> Hi <%= @user.name %>!! </h1><br>
 
-View Run List
-<a href='/show/runs'><button>Run List</button></a>
 
-would you like to add a new run to your runs list ?
+
+<h3>Would you like to add a new run to your runs list ?</h3><br>
+
 <%=@errors%>
 <form method="POST" action="/run/add">
   New Run 
-  <input type="text" name="time" placeholder="time">
+  <input type="text" name="time" placeholder="time in Min.">
   <input type="text" name="location" placeholder="location">
   <input type="text" name="miles" placeholder="miles">
   <input type="date" id="start" name="run_date"
-       placeholder="2018-07-22"
-       min="2018-01-01" max="2018-12-31">
+       placeholder="2020-07-22"
+       min="2019-01-01" max="2035-12-31">
        <input type="submit" value="Submit">
 </form>
 
 
-Create an event for others to join 
-<a href='/events/home'><button>events list</button></a>
+<h3>Create an event for others to join</h3> <br>
+
 <%= @errorss %>
 <form method="POST" action="/events/new">
   New Event
-  <input type="text" name="time" placeholder="time">
+  <input type="text" name="time" placeholder="time ex. 3pm">
   <input type="text" name="location" placeholder="location">
   <input type="text" name="description" placeholder="description">
   <input type="date" id="start" name="date"
-       placeholder="2018-07-22"
-       min="2018-01-01" max="2018-12-31">
+       placeholder="2019-07-22"
+       min="2018-01-01" max="2030-12-31">
        <input type="submit" value="Submit">
 </form>
-
-<%@events.each do |t|%>
-Time:<%=t.time%><br>
-Location:<%=t.location%><br>
-Description:<%=t.description%><br>
-Date:<%=t.date%><br>
+<br>
+<%x=1%>
+<center><%@events.each do |t|%>
+<h2><%=x%></h2>
+<%x+=1%>
+Time: <%=t.time%><br>
+Location: <%=t.location%><br>
+Description: <%=t.description%><br>
+Date: <%=t.date%><br>
 People Attending: <%hello = Rsvp.where(:event_id => t.id)%>
                   <%= hello.count%><br>
 <%=@error%>
@@ -61,3 +65,4 @@ People Attending: <%hello = Rsvp.where(:event_id => t.id)%>
 <%end%>
 
 <%end%>
+</center>
