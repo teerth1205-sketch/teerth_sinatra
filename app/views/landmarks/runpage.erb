@@ -37,6 +37,7 @@ Date: <%=t.date%><br>
 Mile Pace: <%pace = (t.time/t.miles.to_f)%><br>
            <%=ms(pace)%><br>
 <a href="/runs/<%=t.id%>/edit"><button>Update</button></a>
+
 <form method="post" action="/runs/<%= t.id %>">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
   <input type="submit" value="delete">

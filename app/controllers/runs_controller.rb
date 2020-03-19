@@ -1,3 +1,4 @@
+require 'pry'
 class RunController < ApplicationController
 
 get '/show/runs' do 
@@ -22,12 +23,13 @@ get '/show/runs' do
  
  get "/runs/:id/edit" do
     redirect_if_not_logged_in
-   @run = Run.find(params[:id])
+   @run = Run.find_by(:id => params[:id])
+   #binding.pry
    erb :'landmarks/update'
  end 
    
   
- patch '/runs/:id' do
+ patch "/runs/:id" do
     redirect_if_not_logged_in
    @run = Run.find(params[:id])
    @run.update(:time => params["time"], :miles => params["miles"], :location => params["location"], :date => params["run_date"], :user_id => session[:user_id])
