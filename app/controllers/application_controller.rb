@@ -13,7 +13,7 @@ class ApplicationController < Sinatra::Base
   end
   
   get '/application/signup' do
-    @errors = []
+    @errors = @user.errors.messages
     erb :'/application/signup'
   end 
   
