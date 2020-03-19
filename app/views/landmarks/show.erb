@@ -32,7 +32,7 @@
   <input type="text" name="description" placeholder="description">
   <input type="date" id="start" name="date"
        placeholder="2019-07-22"
-       min="2018-01-01" max="2030-12-31">
+       min="2018-01-01" max="2035-12-31">
        <input type="submit" value="Submit">
 </form>
 <br>
@@ -56,14 +56,14 @@ People Attending: <%hello = Rsvp.where(:event_id => t.id)%>
 <form method="post" action="/events/<%= t.id %>/delete">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
   <input type="submit" value="delete">
-</form>
+</form><br>
 You created this event! Better Show Up<br>
 <%end%>
 <%if session[:user_id] != Rsvp.find_by(:event_id => t.id).user_id%>
 <form method="post" action="/events/<%= t.id %>/remove">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
   <input type="submit" value="remove">
-</form>
+</form><br>
 <%end%>
 ==================================
 <%end%>

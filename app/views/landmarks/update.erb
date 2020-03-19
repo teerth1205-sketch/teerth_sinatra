@@ -1,11 +1,11 @@
 <form method="POST" action="/runs/<%= @run.id %>">
  <input id="hidden" type="hidden" name="_method" value="patch">
-<input type="text" name="time" value="<%=@run.time%>">
+<input type="text" name="time" value=<%=@run.time%>>
   <input type="text" name="location" value=<%=@run.location%>>
    <input type="text" name="miles" value=<%=@run.miles%>>
   <input type="date" id="start" name="run_date"
        value=<%=@run.date%>
-       min="2018-01-01" max="2018-12-31">
+       min="2018-01-01" max="2035-12-31">
        <input type="submit" value="Submit">
 </form>
 <form method="post" action="/runs/<%= @run.id %>">

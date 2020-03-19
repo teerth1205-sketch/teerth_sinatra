@@ -3,11 +3,11 @@
 <form action='/events/<%=@event.id%>/update' method="POST">
   <input id="hidden" type="hidden" name="_method" value="patch">
   <input type="Text" name="time"  value="<%=@event.time%>">
-  <input type="Text" name="location" palceholder="<%=@event.location%>">
-  <input type="Text" name="description" palceholder="<%=@event.description%>">
+  <input type="Text" name="location" value="<%=@event.location%>">
+  <input type="Text" name="description" value="<%=@event.description%>">
   <input type="date" id="start" name="date"
        value="<%=@event.date%>"
-       min="2018-01-01" max="2018-12-31">
+       min="2018-01-01" max="2035-12-31">
        <input type="submit" value="Submit">
   
 </form>

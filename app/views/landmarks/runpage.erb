@@ -41,6 +41,6 @@ Mile Pace: <%pace = (t.time/t.miles.to_f)%><br>
 <form method="post" action="/runs/<%= t.id %>">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
   <input type="submit" value="delete">
-</form>
+</form><br>
 ================
 <% end %>
