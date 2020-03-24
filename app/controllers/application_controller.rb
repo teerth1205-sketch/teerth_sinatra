@@ -71,10 +71,14 @@ end
     def logged_in?
       !!session[:user_id]
     end
-
+    
+    def current_user
+      @user ||= User.find(session[:user_id])
+    end 
+    
     def ms(pace)
-  "%02d:%02d" % [pace.floor, (pace % 1 * 60).floor]
-  end
+    "%02d:%02d" % [pace.floor, (pace % 1 * 60).floor]
+    end
 
   end
  

@@ -16,9 +16,9 @@ class UserController < ApplicationController
  end 
  
 
- patch '/show/edit' do 
+ patch '/show/:id' do 
     redirect_if_not_logged_in
-   @user = User.find(session[:user_id])
+   @user = User.find(params[:id])
    @user.update(username: params["username"], password: params["password"] )
    redirect '/show'
  end 
