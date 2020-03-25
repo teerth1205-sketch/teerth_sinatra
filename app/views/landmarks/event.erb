@@ -11,7 +11,7 @@ Description: <%=t.description%><br>
 People Attending: <%hello = Rsvp.where(:event_id => t.id)%>
                   <%= hello.count%>
 <%if session[:user_id] != Rsvp.find_by(:event_id => t.id).user_id%> 
-<form method="POST" action="/events/events/<%=t.id%>/join">
+<form method="POST" action="/events/<%=t.id%>/join">
   <input type="submit" value="Join">
 </form>
 <%else%>

@@ -10,7 +10,7 @@ get '/show/runs' do
  post '/run/add' do 
    redirect_if_not_logged_in
    
-   @runs = Run.where(:user_id => session[:user_id])
+  @runs = Run.where(:user_id => session[:user_id])
   @run = Run.new(:time => params["time"], :miles => params["miles"], :location => params["location"], :date => params["run_date"], :user_id => session[:user_id])
   if @run.save
    redirect '/show/runs' 

@@ -24,7 +24,7 @@ class EventController < ApplicationController
   end 
     
    
-  post '/events/events/:id/join' do
+  post '/events/:id/join' do
     redirect_if_not_logged_in
     @event =Event.all
     event = Event.find(params[:id])

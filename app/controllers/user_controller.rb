@@ -3,7 +3,7 @@ class UserController < ApplicationController
  
  get '/show' do 
     redirect_if_not_logged_in
-   @user = User.find(session[:user_id])
+   current_user 
    @events = @user.events
   # binding.pry
    erb :'/landmarks/show' 
@@ -11,7 +11,7 @@ class UserController < ApplicationController
  
  get '/show/edit' do 
     redirect_if_not_logged_in
-   @user = User.find(session[:user_id])
+  current_user
    erb :'/landmarks/edit'
  end 
  

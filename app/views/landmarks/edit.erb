@@ -1,6 +1,6 @@
 <h2>Edit Username and Password</h2>
 
-<form action="/show/edit" method="POST">
+<form action="/show/<%=@user.id%>" method="POST">
     <input id="hidden" type="hidden" name="_method" value="patch">
     <label>Edit Below</label>
     <br>
