@@ -13,7 +13,7 @@ class EventController < ApplicationController
      
     @event = Event.new(:time => params["time"], :location => params["location"], :description => params["description"], :date => params["date"])
     if @event.save 
-    @user = User.find(session[:user_id])
+    current_user
      @user.events << @event
      redirect '/show'
    else 
@@ -28,7 +28,7 @@ class EventController < ApplicationController
     redirect_if_not_logged_in
     @event =Event.all
     event = Event.find(params[:id])
-     @user = User.find(session[:user_id])
+    current_user
      if @user.events.find_by(:id => event.id)
         @error = "Already Attending"
         erb :'/landmarks/event'
@@ -70,7 +70,7 @@ class EventController < ApplicationController
    
   delete '/events/:id/remove' do 
      redirect_if_not_logged_in
-    @user = User.find(session[:user_id])
+    current_user
     @rsvp = Rsvp.find_by(:user_id => session[:user_id], :event_id => params[:id])
     @rsvp.delete
     redirect '/show'
