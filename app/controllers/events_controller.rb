@@ -1,10 +1,10 @@
 require 'pry'
 class EventController < ApplicationController
   
-  get '/events/home' do 
+  get '/events' do 
      redirect_if_not_logged_in
     @event = Event.all
-    erb :'/landmarks/event'
+    erb :'/events/index'
   end
   
  

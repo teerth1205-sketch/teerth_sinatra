@@ -43,7 +43,7 @@ end
 		 if @user && @user.authenticate(params[:password])
 	
 		   session[:user_id] = @user.id
-        redirect '/show'
+        redirect '/home'
       else
         @error = "Wrong Username or Password"
       erb :"/application/login"

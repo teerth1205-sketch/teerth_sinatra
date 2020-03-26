@@ -1,23 +1,23 @@
 require 'pry'
 class RunController < ApplicationController
 
-get '/show/runs' do 
+get '/runs' do 
     redirect_if_not_logged_in
  @runs = Run.where(:user_id => session[:user_id])
- erb :'/landmarks/runpage'
+ erb :'/runs/index'
  end 
  
- post '/run/add' do 
+ post '/runs' do 
    redirect_if_not_logged_in
    
   @runs = Run.where(:user_id => session[:user_id])
   @run = Run.new(:time => params["time"], :miles => params["miles"], :location => params["location"], :date => params["run_date"], :user_id => session[:user_id])
   if @run.save
-   redirect '/show/runs' 
+   redirect '/runs' 
  else 
     #@runs = Run.all
    @errors = @run.errors.messages
-   erb :'landmarks/runpage'
+   erb :'runs/index'
  end 
  end 
  
@@ -25,7 +25,7 @@ get '/show/runs' do
     redirect_if_not_logged_in
    @run = Run.find_by(:id => params[:id])
    #binding.pry
-   erb :'landmarks/update'
+   erb :'events/update'
  end 
    
   
@@ -33,14 +33,14 @@ get '/show/runs' do
     redirect_if_not_logged_in
    @run = Run.find(params[:id])
    @run.update(:time => params["time"], :miles => params["miles"], :location => params["location"], :date => params["run_date"], :user_id => session[:user_id])
-   redirect  '/show/runs' 
+   redirect  '/runs' 
  end 
  
  delete '/runs/:id' do 
     redirect_if_not_logged_in
    @run = Run.find(params[:id])
    @run.destroy
-   redirect '/show/runs'
+   redirect '/runs'
  end 
  
  end 

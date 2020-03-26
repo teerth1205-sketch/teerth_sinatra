@@ -1,18 +1,15 @@
 require 'pry'
 class UserController < ApplicationController
  
- get '/show' do 
+ get '/home' do 
     redirect_if_not_logged_in
-   current_user 
-   @events = @user.events
-  # binding.pry
-   erb :'/landmarks/show' 
+   erb :'/users/home' 
  end 
  
  get '/show/edit' do 
     redirect_if_not_logged_in
   current_user
-   erb :'/landmarks/edit'
+   erb :'/events/edit'
  end 
  
 
