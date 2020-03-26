@@ -40,8 +40,14 @@ class EventController < ApplicationController
   get '/events/:id/update' do 
      redirect_if_not_logged_in
     @event = Event.find(params[:id])
-    erb :'landmarks/new'
+    erb :'events/new'
   end 
+  
+  get '/events/:id/edit' do 
+    redirect_if_not_logged_in
+    @event = Event.find(params[:id])
+   erb :'/events/edit'
+ end 
   
   patch '/events/:id/update' do 
      redirect_if_not_logged_in
