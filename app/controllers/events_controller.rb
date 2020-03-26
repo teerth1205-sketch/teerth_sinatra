@@ -11,15 +11,14 @@ class EventController < ApplicationController
   post '/events/new' do
      redirect_if_not_logged_in
      
-    @event = Event.new(:time => params["time"], :location => params["location"], :description => params["description"], :date => params["date"])
-    if @event.save 
-    current_user
-     @user.events << @event
+    event = current_user.events.build(:time => params["time"], :location => params["location"], :description => params["description"], :date => params["date"])
+    if event.save 
+  
      redirect '/show'
    else 
      
-     @errorss = "You need to input for all fields"
-   #  erb :'/landmarks/show'
+     @errorss = event.errors.full_messages
+     erb :'/landmarks/show'
   end 
   end 
     
