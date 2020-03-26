@@ -3,14 +3,14 @@
 <br>
 
 
-<h1> Hi <%= @user.name %>!! </h1><br>
+<h1> Hi <%= current_user.name %>!! </h1><br>
 
 
 
 <h3>Would you like to add a new run to your runs list ?</h3><br>
 
 <%=@errors%>
-<form method="POST" action="/run/add">
+<form method="POST" action="/runs">
   New Run 
   <input type="text" name="time" placeholder="time in Min.">
   <input type="text" name="location" placeholder="location">
@@ -28,7 +28,7 @@
 <li><%= e %></li>
 <% end %>
 </ul>
-<form method="POST" action="/events/new">
+<form method="POST" action="/events">
   New Event
   <input type="text" name="time" placeholder="time ex. 3pm">
   <input type="text" name="location" placeholder="location">
