@@ -11,9 +11,9 @@ class EventController < ApplicationController
   post '/events' do
      redirect_if_not_logged_in
      
-    event = current_user.events.build(:time => params["time"], :location => params["location"], :description => params["description"], :date => params["date"])
-    if event.save 
-  
+    event = current_user.events.create(:time => params["time"], :location => params["location"], :description => params["description"], :date => params["date"])
+    if event.save
+     
      redirect '/home'
    else 
      
@@ -63,11 +63,11 @@ class EventController < ApplicationController
    
    delete '/events/:id/delete' do 
       redirect_if_not_logged_in
-     @event = Event.find(params[:id])
+     @event = current_user.events.find(params[:id])
      @rsvp = Rsvp.find_by(:event_id => params[:id])
      if @rsvp.user_id == session[:user_id]
      @event.destroy
-     redirect '/show'
+     redirect '/home'
      else
        @error1 = "you cannot delete this event"
      end
