@@ -11,15 +11,14 @@ class EventController < ApplicationController
   post '/events' do
      redirect_if_not_logged_in
      
-    event = current_user.events.create(:time => params["time"], :location => params["location"], :description => params["description"], :date => params["date"])
-    if event.save
-     
+    event = current_user.events.build(:time => params["time"], :location => params["location"], :description => params["description"], :date => params["date"])
+    if current_user.save
      redirect '/home'
    else 
-     
+     current_user.reload
      @errorss = event.errors.full_messages
      erb :'users/home'
-  end 
+    end 
   end 
     
    

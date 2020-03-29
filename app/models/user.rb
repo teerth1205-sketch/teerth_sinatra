@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
 
  validates_uniqueness_of :username
  validates_presence_of :name, :username
+ 
+  def not_rsvp?(e)
+    !e.rsvps.find_by(user_id: id)
+  end
 end

@@ -79,12 +79,6 @@ end
     def ms(pace)
     "%02d:%02d" % [pace.floor, (pace % 1 * 60).floor]
     end
-    
-    def conditional(t)
-      if Rsvp.find_by(:event_id => t.id)
-         !!(session[:user_id] != Rsvp.find_by(:event_id => t.id).user_id)
-       end 
-    end
 
   end
  

@@ -50,7 +50,7 @@ Description: <%=e.description%><br>
 Date: <%=e.date%><br>
 People Attending: <%= e.users.count %>
 <%=@error%>
-<%if e.id && current_user == Rsvp.find_by(:event_id => e.id).user%>
+<%if current_user == Rsvp.find_by(event: e).user %>
 <a href = '/events/<%=e.id%>/update'><button>Update</button></a></a>
 
 <%=@error1%>
@@ -60,8 +60,7 @@ People Attending: <%= e.users.count %>
   <input type="submit" value="delete">
 </form><br>
 You created this event! Better Show Up<br>
-<%end%>
-<%if e.id && current_user != Rsvp.find_by(:event_id => e.id).user%>
+<%else %>
 <form method="post" action="/events/<%= e.id %>/remove">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
   <input type="submit" value="remove">
