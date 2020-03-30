@@ -6,8 +6,11 @@ class UserController < ApplicationController
    erb :'/users/home' 
  end 
 
+ get '/show/edit' do 
+    redirect_if_not_logged_in
+    erb :'/users/edit'
+ end 
  
-
  patch '/show/:id' do 
     redirect_if_not_logged_in
    @user = User.find(params[:id])

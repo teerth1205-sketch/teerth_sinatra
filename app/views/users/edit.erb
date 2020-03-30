@@ -1,0 +1,9 @@
+Update Username and Password
+
+<form action="/show/<%=current_user.id%>" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <input id="Username" name="username" value="<%=current_user.username%>">
+  <input id="Password" name="password" placeholder=""="password">
+  <input type="submit" value="Submit">
+  
+</form>
