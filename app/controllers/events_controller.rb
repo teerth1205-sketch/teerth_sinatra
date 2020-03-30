@@ -56,7 +56,7 @@ class EventController < ApplicationController
      @event.update(:time => params["time"], :location => params["location"], :date => params["date"], :description => params["description"])
      redirect '/show'
      else
-      @error = "you cannot update this event"
+     error
      end 
    end 
    
@@ -69,6 +69,7 @@ class EventController < ApplicationController
      redirect '/home'
      else
        @error1 = "you cannot delete this event"
+       
      end
    end 
    

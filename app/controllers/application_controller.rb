@@ -79,6 +79,10 @@ end
     def ms(pace)
     "%02d:%02d" % [pace.floor, (pace % 1 * 60).floor]
     end
+    
+    def error
+      @error = "you cannot update this event"
+    end 
 
   end
  

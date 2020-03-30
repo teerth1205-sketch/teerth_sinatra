@@ -31,9 +31,7 @@ Time: <%=t.time%><br>
 Miles: <%=t.miles%><br>
 Loaction: <%=t.location%><br>
 Date: <%=t.date%><br>
-<% def ms(pace)%>
- <% "%02d:%02d" % [pace.floor, (pace % 1 * 60).floor]%>
-  <%end%>
+
 Mile Pace: <%pace = (t.time/t.miles.to_f)%><br>
            <%=ms(pace)%><br>
 <a href="/runs/<%=t.id%>/edit"><button>Update</button></a>
